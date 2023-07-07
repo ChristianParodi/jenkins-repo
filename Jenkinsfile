@@ -16,14 +16,14 @@ pipeline {
         stage('Code analysis') {
             steps {
                 echo "Analysing code..."
-                sh "tslint -c tslint.json 'src/**/*.ts'"
+                sh "npm run lint"
             }
             post {
                 failure {
-                    echo '-- TSLint Failed! -- Please fix the above warnings/errors.'
+                    echo '-- ESLint Failed! -- Please fix the above warnings/errors.'
                 }
                 success {
-                    echo 'TSLint succeeded!'
+                    echo 'ESLint succeeded!'
                 }
             }
         }
