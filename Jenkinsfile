@@ -10,7 +10,7 @@ pipeline {
             steps {
                 git url: "https://github.com/ChristianParodi/jenkins-repo.git", branch: "main"
                 echo "Installing..."
-                sh "npm i"
+                sh "npm i && npm install tslint"
             }
         }
         stage('Code analysis') {
