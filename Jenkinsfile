@@ -16,7 +16,7 @@ pipeline {
         stage('Code analysis') {
             steps {
                 echo "Analysing code..."
-                sh "tslint -c tslint.json 'src/**/*.ts'"
+                sh "tslint -c tsconfig.json 'src/**/*.ts'"
             }
             post {
                 failure {
