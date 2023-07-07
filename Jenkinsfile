@@ -10,20 +10,20 @@ pipeline {
             steps {
                 git url: "https://github.com/ChristianParodi/jenkins-repo.git", branch: "main"
                 echo "Installing..."
-                sh "npm i && npm install tslint"
+                sh "npm i"
             }
         }
         stage('Code analysis') {
             steps {
                 echo "Analysing code..."
-                sh "tslint -c tsconfig.json 'src/**/*.ts'"
+                sh "eslint -c tsconfig.json 'src/**/*.ts'"
             }
             post {
                 failure {
-                    echo '-- TSLint Failed! -- Please fix the above warnings/errors.'
+                    echo '-- ESLint Failed! -- Please fix the above warnings/errors.'
                 }
                 success {
-                    echo 'TSLint succeeded!'
+                    echo 'ESLint succeeded!'
                 }
             }
         }
